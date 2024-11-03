@@ -1,0 +1,33 @@
+name: Update TR Adresslist Mikrotik
+
+on:
+  schedule:
+    - cron: "0 0 * * 2"
+  workflow_dispatch:
+
+jobs:
+  update-blacklist:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up environment
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y curl
+
+      - name: Run crowdsec_mikrotik
+        run: |
+          bash grabber/crowdsec_mikrotiktr.sh
+          
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "${GIT_EMAIL}"
+          git config --local user.name "ertugrulturan"
+          git add turkiships.rsc
+          git commit -m "Update turkiships.rsc"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
