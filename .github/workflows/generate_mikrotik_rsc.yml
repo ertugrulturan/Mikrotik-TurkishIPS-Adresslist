@@ -2,7 +2,7 @@ name: Generate MikroTik RSC File
 
 on:
   schedule:
-    - cron: '0 0 */4 * *' # Runs daily at midnight UTC
+    - cron: '0 0 1,5,9,13,17,21,25 * *' # Runs daily at midnight UTC
   workflow_dispatch: # Allows for manual triggering
 
 jobs:
