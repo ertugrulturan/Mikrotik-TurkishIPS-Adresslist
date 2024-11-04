@@ -1,4 +1,5 @@
 /ip firewall address-list
+add address=2.16.88.0/24 list=turkiships timeout=7d
 add address=2.16.150.0/23 list=turkiships timeout=7d
 add address=2.17.136.0/22 list=turkiships timeout=7d
 add address=2.17.224.0/20 list=turkiships timeout=7d
